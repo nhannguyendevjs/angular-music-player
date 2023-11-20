@@ -11,12 +11,7 @@ import { environment } from '../environments/environment';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [
-    NgIf,
-    RouterOutlet,
-    TranslocoModule,
-    MatProgressBarModule,
-  ],
+  imports: [NgIf, RouterOutlet, TranslocoModule, MatProgressBarModule],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
@@ -30,20 +25,7 @@ export class AppComponent extends BaseComponent implements OnInit {
   constructor() {
     super();
 
-    this.registerMatIcons([
-      {
-        name: 'compost',
-        url: 'assets/mat-icons/compost.svg',
-      },
-      {
-        name: 'eco',
-        url: 'assets/mat-icons/eco.svg',
-      },
-      {
-        name: 'image',
-        url: 'assets/mat-icons/image.svg',
-      },
-    ]);
+    this.registerMatIcons([]);
   }
 
   ngOnInit() {
@@ -56,14 +38,18 @@ export class AppComponent extends BaseComponent implements OnInit {
 
   registerAppWebWorker() {
     if (typeof Worker !== 'undefined') {
-      const worker = new Worker(new URL('./utils/web-workers/app.worker', import.meta.url));
-      { // Register App Worker events
+      const worker = new Worker(
+        new URL('./utils/web-workers/app.worker', import.meta.url)
+      );
+      {
+        // Register App Worker events
         worker.onmessage = ({ data }) => {
           console.log(data);
-        }
+        };
         worker.postMessage('Angular app has been successfully launched.');
       }
-      { // Init App State worker
+      {
+        // Init App State worker
         this.appState.worker = worker;
         this.stateService.commit(this.appState);
       }
@@ -75,25 +61,31 @@ export class AppComponent extends BaseComponent implements OnInit {
   }
 
   registerRouterEvents() {
-    this.#router.events.pipe(takeUntil(this.destroy$)).subscribe(navigationEvent => {
-      if (navigationEvent instanceof NavigationStart) {
-        // TODO
-        // ...
-      }
-    });
+    this.#router.events
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((navigationEvent) => {
+        if (navigationEvent instanceof NavigationStart) {
+          // TODO
+          // ...
+        }
+      });
   }
 
   registerServiceWorkerUpgrade() {
     if (this.#swUpdate.isEnabled) {
-      timer(0, 30000).pipe(takeUntil(this.destroy$)).subscribe(() => {
-        this.#swUpdate.checkForUpdate().then(res => {
-          if (res) {
-            if (confirm('A new version is available, do you want to load it?')) {
-              window.location.reload();
+      timer(0, 30000)
+        .pipe(takeUntil(this.destroy$))
+        .subscribe(() => {
+          this.#swUpdate.checkForUpdate().then((res) => {
+            if (res) {
+              if (
+                confirm('A new version is available, do you want to load it?')
+              ) {
+                window.location.reload();
+              }
             }
-          }
+          });
         });
-      });
     }
   }
 
@@ -102,28 +94,33 @@ export class AppComponent extends BaseComponent implements OnInit {
     this.appState.language = language;
     this.stateService.commit(this.appState);
     this.#translocoService.setActiveLang(language);
-    this.#translocoService.setFallbackLangForMissingTranslation({ fallbackLang: 'en' });
+    this.#translocoService.setFallbackLangForMissingTranslation({
+      fallbackLang: 'en',
+    });
   }
 
   registerSharedActions() {
-    this.sharedService.sharedData$.pipe(takeUntil(this.destroy$)).subscribe(res => {
-      switch (res.action) {
-        case 'show-loading-bar':
-          this.isShowLoadingBar.set(true);
-          break;
-        case 'hide-loading-bar':
-          this.isShowLoadingBar.set(false);
-          break;
-        default:
-          break;
-      }
-    });
+    this.sharedService.sharedData$
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((res) => {
+        switch (res.action) {
+          case 'show-loading-bar':
+            this.isShowLoadingBar.set(true);
+            break;
+          case 'hide-loading-bar':
+            this.isShowLoadingBar.set(false);
+            break;
+          default:
+            break;
+        }
+      });
   }
 
   override ngOnDestroy() {
     super.ngOnDestroy();
 
-    { // Destroy App State - worker
+    {
+      // Destroy App State - worker
       if (this.appState.worker) {
         this.appState.worker.terminate();
         this.appState.worker = undefined;

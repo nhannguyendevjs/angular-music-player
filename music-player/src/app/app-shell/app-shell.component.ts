@@ -1,8 +1,8 @@
-import { Component, OnInit, inject } from '@angular/core';
-import { Router } from '@angular/router';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { take, timer } from 'rxjs';
-import { BaseComponent } from '../utils/abstract/base.component';
+import { Component, OnInit, inject } from '@angular/core'
+import { Router } from '@angular/router'
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
+import { take, timer } from 'rxjs'
+import { BaseComponent } from '../utils/abstract/base.component'
 
 @Component({
   selector: 'app-shell',
@@ -12,19 +12,21 @@ import { BaseComponent } from '../utils/abstract/base.component';
   styleUrls: ['./app-shell.component.scss'],
 })
 export class AppShellComponent extends BaseComponent implements OnInit {
-  #router = inject(Router);
+  #router = inject(Router)
 
   ngOnInit() {
-    timer(1000).pipe(take(1)).subscribe(() => {
-      this.#router.navigate(['/home']);
-    });
+    timer(1000)
+      .pipe(take(1))
+      .subscribe(() => {
+        this.#router.navigate(['/home'])
+      })
   }
 
   clearAppStorage() {
-    localStorage.clear();
+    localStorage.clear()
   }
 
   override ngOnDestroy() {
-    super.ngOnDestroy();
+    super.ngOnDestroy()
   }
 }
