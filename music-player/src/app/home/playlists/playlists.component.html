@@ -1,1 +1,23 @@
-<p>playlists works!</p>,
+<div class="flex flex-col gap-8">
+  <div class="flex flex-row gap-4 items-center justify-between p-4">
+    <input
+      type="text"
+      placeholder="What do you want to listen to?"
+      class="w-full h-11 p-4 text-sm rounded-full text-white bg-zinc-600 outline-white caret-white truncate"
+    />
+
+    <mat-icon class="cursor-pointer" matTooltip="Add to current playlist">playlist_add</mat-icon>
+  </div>
+
+  <div class="flex flex-col gap-2 overflow-auto h-[calc(100vh-(13rem))]">
+    @for (playlist of playlists(); track $index;) {
+    <div class="ml-4 p-2 pr-0 flex flex-row gap-4 hover:bg-zinc-800" [ngClass]="{ 'bg-zinc-800': $index === 0 }">
+      <mat-icon class="rounded !w-12 !h-12 text-5xl">library_music</mat-icon>
+      <div class="flex flex-col justify-between">
+        <div>Playlist {{ $index }}</div>
+        <div class="text-sm text-zinc-400">Nhan Nguyen</div>
+      </div>
+    </div>
+    }
+  </div>
+</div>

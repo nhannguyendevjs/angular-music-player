@@ -1,1 +1,78 @@
-<p>songs works!</p>,
+<div class="flex flex-row gap-6 bg-gradient-to-r from-red-900 via-purple-800 to-indigo-700 rounded-t p-2">
+  <mat-icon class="rounded !w-52 !h-52 text-[13rem]">library_music</mat-icon>
+  <div class="flex flex-col justify-between">
+    <div class="text-7xl font-bold pt-16">Playlist 0</div>
+    <div class="flex flex-row gap-1 text-sm">
+      <div class="font-bold">Nhan Nguyen</div>
+      <div>*</div>
+      <div>3 songs,</div>
+      <div class="text-zinc-300">1 hr 6 min</div>
+    </div>
+  </div>
+</div>
+
+<div class="flex flex-row items-center gap-4 p-2">
+  <mat-icon class="cursor-pointer text-green-500 !w-16 !h-16 text-[4rem]" matTooltip="Play this playlist">play_circle</mat-icon>
+  <mat-icon class="cursor-pointer text-zinc-300 !w-8 !h-8 text-[2rem]" matTooltip="Enable shuffle">shuffle</mat-icon>
+</div>
+
+<div class="max-h-[32rem] overflow-auto p-2">
+  <table class="table-auto border-collapse w-full">
+    <thead class="border-b-[1px] border-zinc-800">
+      <tr>
+        <th class="w-auto font-light p-4 text-sm text-zinc-300 text-left">#</th>
+        <th class="w-auto font-light p-4 text-sm text-zinc-300 text-left">Title</th>
+        <th class="w-auto font-light p-4 text-sm text-zinc-300 text-left">Album</th>
+        <th class="w-auto font-light p-4 text-sm text-zinc-300 text-left">Date added</th>
+        <th class="w-auto font-light p-4 text-sm text-zinc-300 text-left">Duration</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="p-4 text-sm text-zinc-300">1</td>
+        <td class="p-4 text-white">
+          <div class="flex flex-row items-center gap-4">
+            <mat-icon class="cursor-pointer" matTooltip="Play this song">play_circle</mat-icon>
+            <div class="flex flex-col gap-1">
+              <div>I Want Out</div>
+              <div class="text-sm text-zinc-300">Helloween</div>
+            </div>
+          </div>
+        </td>
+        <td class="p-4 text-sm text-zinc-300">Keeper of the Seven Keys</td>
+        <td class="p-4 text-sm text-zinc-300">Jul 19, 2023</td>
+        <td class="p-4 text-sm text-zinc-300">4:40</td>
+      </tr>
+      <tr>
+        <td class="p-4 text-sm text-zinc-300">2</td>
+        <td class="p-4 text-white">
+          <div class="flex flex-row items-center gap-4">
+            <mat-icon class="cursor-pointer" matTooltip="Play this song">play_circle</mat-icon>
+            <div class="flex flex-col gap-1">
+              <div>If I Could Fly</div>
+              <div class="text-sm text-zinc-300">Helloween</div>
+            </div>
+          </div>
+        </td>
+        <td class="p-4 text-sm text-zinc-300">The Dark Ride</td>
+        <td class="p-4 text-sm text-zinc-300">Jul 19, 2023</td>
+        <td class="p-4 text-sm text-zinc-300">4:09</td>
+      </tr>
+      <tr>
+        <td class="p-4 text-sm text-zinc-300">3</td>
+        <td class="p-4 text-sm text-white">
+          <div class="flex flex-row items-center gap-4">
+            <mat-icon class="cursor-pointer" matTooltip="Play this song">play_circle</mat-icon>
+            <div class="flex flex-col gap-1">
+              <div>Wind Of Change</div>
+              <div class="text-sm text-zinc-300">Scorpions</div>
+            </div>
+          </div>
+        </td>
+        <td class="p-4 text-sm text-zinc-300">Crazy Word</td>
+        <td class="p-4 text-sm text-zinc-300">Jul 19, 2023</td>
+        <td class="p-4 text-sm text-zinc-300">5:12</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

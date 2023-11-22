@@ -1,1 +1,17 @@
-<p>media-player works!</p>,
+<div class="p-4 flex flex-row items-center justify-between text-white w-[calc(100vw-2rem)]">
+  <div class="flex flex-row items-center gap-4">
+    <mat-icon class="cursor-pointer" matTooltip="Playing">play_circle</mat-icon>
+    <div class="flex flex-col gap-1">
+      <div>I Want Out</div>
+      <div class="text-sm text-zinc-300">Helloween</div>
+    </div>
+  </div>
+
+  <audio controls class="h-12">
+    <source src="horse.ogg" type="audio/ogg" />
+    <source src="horse.mp3" type="audio/mpeg" />
+    Your browser does not support the audio element.
+  </audio>
+
+  <mat-icon class="cursor-pointer" matTooltip="Fullscreen">fullscreen</mat-icon>
+</div>
